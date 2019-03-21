@@ -1,0 +1,89 @@
+/*...Style for card...*/
+.card {
+    background-color: #F7F7F7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-container.card {
+    max-width: 320px;
+    padding: 25px 25px;
+}
+
+/*...Style for snackbar...*/
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 60px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 60px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 60px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {top: 60px; opacity: 1;} 
+    to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {top: 60px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
+#snackbar.msg-danger{
+    background-color: #ac2925;
+}
+
+#snackbar.msg-info{
+    background-color: #269abc;
+}
+
+#snackbar.msg-success{
+    background-color: #398439;
+}
+
+#snackbar.msg-warning{
+    background-color: #ec971f;
+}
+
+.tblborder th {
+    border : 2px solid #fff;
+    background-color :  #3b5998;
+    white-space: nowrap;
+    font-weight: bold;
+    color : white;
+    text-align : center;
+ }
+
+.color-grey {
+    color: #ccc;
+}
