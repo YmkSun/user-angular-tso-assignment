@@ -55,4 +55,14 @@ export class UserComponent {
     this._user = new User();
   }
 
+  getDept(did: any) {
+    let result = this._data._deptList.find(x => x.key === did);
+    return result ? result.value : '';
+  }
+
+  getRole(rid: any) {
+    let result = this._data._roleList.find(x => x.key === rid);
+    return result ? result.value : '';
+  }
+
 }

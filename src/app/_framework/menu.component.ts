@@ -23,4 +23,9 @@ export class MenuComponent {
     this._router.navigate(['/user', this._com._profile.id]);
   }
 
+  logout() {
+    this._com._profile = { id: 0, username: '', password: '', role: 0, auth: '' };
+    this._router.navigate(['/login']);
+  }
+
 }

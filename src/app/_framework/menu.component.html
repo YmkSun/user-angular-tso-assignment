@@ -4,11 +4,11 @@
             <a *ngIf='_logo' class="navbar-brand" [routerLink]="[_logo.link]">{{_logo.name}}</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a routerLink="/user">User List</a></li>
+            <li *ngIf="_com._profile.role!=3"><a routerLink="/user">User List</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a (click)="goto()">{{_name}}</a></li>
-            <li><a routerLink="/login"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
+            <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
         </ul>
     </div>
 </nav>

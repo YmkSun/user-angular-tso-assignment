@@ -5,53 +5,67 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Username:</label>
             <div class="col-sm-6">
-                <input type="email" class="form-control" id="username" [(ngModel)]="_user.username" [ngModelOptions]="{standalone: true}" placeholder="Enter username">
+                <input type="email" class="form-control" id="username" [(ngModel)]="_user.username"
+                    [ngModelOptions]="{standalone: true}" placeholder="Enter username"
+                    [readonly]="com._profile.role!=1">
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2">Full Name:</label>
             <div class="col-sm-6">
-                <input type="email" class="form-control" id="full_name" [(ngModel)]="_user.fullName" [ngModelOptions]="{standalone: true}" placeholder="Enter full name">
+                <input type="email" class="form-control" id="full_name" [(ngModel)]="_user.fullName"
+                    [ngModelOptions]="{standalone: true}" placeholder="Enter full name"
+                    [readonly]="com._profile.role!=1">
             </div>
         </div>
 
         <div *ngIf="_user.id==0" class="form-group">
             <label class="control-label col-sm-2">Password:</label>
             <div class="col-sm-6">
-                <input type="password" class="form-control" id="password" [(ngModel)]="_user.password" [ngModelOptions]="{standalone: true}" placeholder="Enter password">
+                <input type="password" class="form-control" id="password" [(ngModel)]="_user.password"
+                    [ngModelOptions]="{standalone: true}" placeholder="Enter password"
+                    [readonly]="com._profile.role!=1">
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2">Email:</label>
             <div class="col-sm-6">
-                <input type="email" class="form-control" id="email" [(ngModel)]="_user.email" [ngModelOptions]="{standalone: true}" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" [(ngModel)]="_user.email"
+                    [ngModelOptions]="{standalone: true}" placeholder="Enter email" [readonly]="com._profile.role!=1">
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2">Phone:</label>
             <div class="col-sm-6">
-                <input type="email" class="form-control" id="phone" [(ngModel)]="_user.phone" [ngModelOptions]="{standalone: true}" placeholder="Enter phone">
+                <input type="email" class="form-control" id="phone" [(ngModel)]="_user.phone"
+                    [ngModelOptions]="{standalone: true}" placeholder="Enter phone">
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2">Department:</label>
-            <div class="col-sm-6">
+            <div *ngIf="com._profile.role==1" class="col-sm-6">
                 <select class="form-control" id="dept" [(ngModel)]="_user.dept" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let dept of _data._deptList" value="{{dept.key}}"> {{dept.value}}</option>
                 </select>
+            </div>
+            <div *ngIf="com._profile.role!=1" class="col-sm-6">
+                <input type="text" class="form-control" id="dept" [value]="getDept(_user.dept)" readonly>
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2">Role:</label>
-            <div class="col-sm-6">
+            <div *ngIf="com._profile.role==1" class="col-sm-6">
                 <select class="form-control" id="role" [(ngModel)]="_user.role" [ngModelOptions]="{standalone: true}">
                     <option *ngFor="let role of _data._roleList" value="{{role.key}}"> {{role.value}}</option>
                 </select>
+            </div>
+            <div *ngIf="com._profile.role!=1" class="col-sm-6">
+                <input type="text" class="form-control" id="role" [value]="getRole(_user.role)" readonly>
             </div>
         </div>
 
@@ -59,10 +73,13 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button *ngIf="_user.id==0" type="submit" class="btn btn-primary" (click)="save()">Save</button> 
-                <button *ngIf="_user.id!=0" type="submit" class="btn btn-primary" (click)="update()">Update</button>  &nbsp;
-                <button *ngIf="_user.id!=0" class="btn btn-danger" (click)="delete()">Delete</button> &nbsp;
-                <button class="btn btn-warning" (click)="clean()">Clean</button>
+                <button *ngIf="_user.id==0 && com._profile.role==1" type="submit" class="btn btn-primary"
+                    (click)="save()">Save</button>
+                <button *ngIf="_user.id!=0" type="submit" class="btn btn-primary" (click)="update()">Update</button>
+                &nbsp;
+                <button *ngIf="_user.id!=0 && com._profile.role==1" class="btn btn-danger"
+                    (click)="delete()">Delete</button> &nbsp;
+                <button *ngIf="com._profile.role==1" class="btn btn-warning" (click)="clean()">Clean</button>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ export class UserListComponent {
 
   _title: string = 'User List';
 
-  _userlist;
+  _userlist: any;
   _searchVal: string;
 
   constructor(private com: ComService, private _router: Router, private _data: DataResource, private _service: UserService) {
@@ -20,6 +20,7 @@ export class UserListComponent {
       this._router.navigate(['/login']);
     }
     this._searchVal = '';
+    this._userlist = [];
     this.getAll();
   }
 
