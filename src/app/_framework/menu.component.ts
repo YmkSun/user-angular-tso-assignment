@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ComService } from '../_helper/com.service';
-import { DataResource } from '../_shared/data.resource';
+
 
 @Component({
   selector: 'menu-header',
-  templateUrl: './menu.component.html',
-  styleUrls: ['css/menu.css']
+  templateUrl: './menu.component.html'
 })
 export class MenuComponent {
 
-  name = 'User';
+  _name = '';
   _logo: { name: string, link: string };
+  _userid = 0;
 
-  constructor(private ics: ComService, private data: DataResource) {
-    this.name = this.data._profileName;
-    this._logo = { name: 'User Management', link: '/dashboard' };
+  constructor(private _com: ComService, private _router: Router) {
+    this._name = this._com._profile.username;
+    this._logo = { name: 'User Management', link: '/user' };
+    this._userid = this._com._profile.id;
+  }
+
+  goto() {
+    this._router.navigate(['/user', this._com._profile.id]);
   }
 
 }

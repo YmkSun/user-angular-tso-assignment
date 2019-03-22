@@ -1,14 +1,14 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a *ngIf='_logo' class="navbar-brand" [routerLink]="[_logo.link]">{{_logo.name}}</a>
         </div>
-        <ul *ngIf="_menus" class="nav navbar-nav">
-            <li><a routerLink="/user">>Page 1</a></li>
+        <ul class="nav navbar-nav">
+            <li><a routerLink="/user">User List</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li>{{name}}</li>
-            <li><a routerLink="/login">><span class="glyphicon glyphicon-log-out"></span></a></li>
+            <li><a (click)="goto()">{{_name}}</a></li>
+            <li><a routerLink="/login"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
         </ul>
     </div>
 </nav>
